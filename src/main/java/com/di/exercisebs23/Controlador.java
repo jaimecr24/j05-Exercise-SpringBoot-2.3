@@ -14,14 +14,14 @@ public class Controlador {
     @Autowired @Qualifier("bean3") PersonaService p3;
 
     @GetMapping("/controlador/bean/{bean}")
-    public Persona getPersona(@PathVariable String bean)
+    public Object getPersona(@PathVariable String bean)
     {
         switch (bean)
         {
             case "bean1": return new Persona(p1.getNombre(),p1.getPoblacion(),p1.getEdad());
             case "bean2": return new Persona(p2.getNombre(),p2.getPoblacion(),p2.getEdad());
             case "bean3": return new Persona(p3.getNombre(),p3.getPoblacion(),p3.getEdad());
-            default: return new Persona("","",0);
+            default: return "Error en datos de entrada";
         }
     }
 
